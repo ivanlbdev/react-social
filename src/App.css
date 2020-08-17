@@ -1,0 +1,29 @@
+*, *::after, *::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.main-content {
+	display: flex;
+	flex-direction: row;
+  width: 100%;
+  margin-top: 10px;
+ }
+
+ .app_wrapper_content {
+   width: 100%;
+ }
+/* верхнее меню */
+
+
+
+/* навигация */
+
+/* основная часть */
+

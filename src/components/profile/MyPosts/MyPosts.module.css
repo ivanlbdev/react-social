@@ -1,0 +1,17 @@
+.quest {
+	padding-top: 15px;
+	padding-bottom: 15px;
+ }
+ .get_posts {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+ }
+ .posts input {
+	flex-basis: 90%;
+ }
+ .posts button {
+	border: none;
+ }
+ 
+ 

@@ -1,0 +1,36 @@
+
+ .header {
+	background-color: #6495ED;
+ }
+ .container {
+	max-width: 1120px;
+	margin: 0 auto;
+ }
+ .top_menu {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	height: 70px;
+	font-size: 18px;
+	color: #fff;
+ }
+ .search_area {
+	margin-left: -160px;
+ }
+ .search_area input {
+	width: 220px;
+	height: 35px;
+	border: none;
+	border-radius: 20px;
+	padding-left: 7px;
+ }
+ .search_area input:focus {
+	outline: none;
+ }
+ .logo_image {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	background-color: #fff;
+ }

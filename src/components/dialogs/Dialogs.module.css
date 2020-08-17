@@ -1,0 +1,10 @@
+.dialogs {
+	display: flex;
+	flex-direction: row;
+}
+.dialogs_items {
+	flex-basis: 25%;
+}
+.dialogs_items .active {
+	font-weight: 700;
+}
