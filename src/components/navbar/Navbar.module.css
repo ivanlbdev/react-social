@@ -1,3 +1,6 @@
+.nav_block {
+	width: 20%;
+}
 .nav {
 	margin-right: 35px;
  }
@@ -23,28 +26,4 @@
  }
 .nav .active::after {
 	background: #6495ED;
-}
-
-/* Мобильное меню */
-.mobile_nav {
-	display: none;
-}
-@media (max-width: 699px) {
-	.nav {
-		margin: 0;
-	}
-	.full_nav {
-		display: none;
-	}
-	.mobile_nav {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		position: fixed;
-		bottom: 0;
-		left: 0;
-		width: 100%;
-		background: #ffffff;
-		z-index: 1000;
-	}
 }

@@ -13,7 +13,7 @@ const MyPosts = (props) => {
 					<h2>Что у вас нового?</h2>
 				</div>
 				<div className={c.get_posts}>
-					<input type="text" />
+					<textarea name="" id="" cols="90" rows="4"></textarea>
 					<button>Опубликовать</button>
 				</div>
 			</div>
