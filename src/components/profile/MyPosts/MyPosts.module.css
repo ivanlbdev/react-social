@@ -7,6 +7,9 @@
 	flex-direction: row;
 	justify-content: space-between;
  }
+ .get_posts button {
+	 cursor: pointer;
+ }
  .posts input {
 	flex-basis: 90%;
  }
