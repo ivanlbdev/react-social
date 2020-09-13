@@ -8,3 +8,38 @@
 .dialogs_items .active {
 	font-weight: 700;
 }
+
+.messages {
+	width: 100%;
+}
+
+.push_mes {
+	padding-top: 20px;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.push_mes textarea {
+	width: 80%;
+	height: 50px;
+	border: 1px solid #888;
+	resize: none;
+	outline: none;
+	overflow: auto;
+	border-radius: 12px;
+	padding: 10px;
+}
+
+.push_mes button {
+	width: 18%;
+	height: 30px;
+	outline: none;
+	border: none;
+	background: #6495ED;
+	cursor: pointer;
+	color: #fff;
+	border-radius: 6px;
+
+}
