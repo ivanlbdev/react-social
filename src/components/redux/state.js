@@ -1,4 +1,6 @@
-import { renderEntrieTree } from "../../render";
+let renderEntrieTree = () => {
+	console.log('state was changed');
+}
 
 let state = {
 	navBar: {
@@ -43,7 +45,7 @@ let state = {
 
 window.state = state;
 
-export let addPost = () => {
+export const addPost = () => {
 	let newPost = {
 		id: 5,
 		message: state.profilePage.newPostText,
@@ -54,17 +56,17 @@ export let addPost = () => {
 	renderEntrieTree(state);
 };
 
-export let updateNewPostText = (newText) => {
+export const updateNewPostText = (newText) => {
 	state.profilePage.newPostText = newText;
 	renderEntrieTree(state);
 };
 
-export let updateTextMessage = (newText) => {
+export const updateTextMessage = (newText) => {
 	state.messagesPage.textMessage = newText;
 	renderEntrieTree(state);
 }
 
-export let addMessage = () => {
+export const addMessage = () => {
 	let newMessage = {
 		id: 6,
 		message: state.messagesPage.textMessage,
@@ -74,4 +76,7 @@ export let addMessage = () => {
 	renderEntrieTree(state);
 }
 
+export const subscribe = (observer) => {
+	renderEntrieTree = observer;
+}
 export default state
