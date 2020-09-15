@@ -14,10 +14,7 @@ let renderEntrieTree = (state) => {
 		<React.StrictMode>
 			<App
 				appState={state}
-				addPost={store.addPost.bind(store)}
-				addMessage={store.addMessage.bind(store)}
-				updateNewPostText={store.updateNewPostText.bind(store)}
-				updateTextMessage={store.updateTextMessage.bind(store)}
+				dispatch={store.dispatch.bind(store)}
 			/>
 		</React.StrictMode>,
 		document.getElementById('root')

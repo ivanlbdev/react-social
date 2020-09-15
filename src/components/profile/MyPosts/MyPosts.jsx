@@ -5,16 +5,16 @@ import Post from './Post/Post';
 const MyPosts = (props) => {
 
 
-	let postElements = props.postsData.map((post) => <Post message={post.message} likeNumber={post.likesCount} />)
+	let postElements = props.profilePage.postsData.map((post) => <Post message={post.message} likeNumber={post.likesCount} />)
 
 	let newPostElement = React.createRef();
 
 	let addPost = () => {
-		props.addPost();
+		props.dispatch({ type: 'ADD-POST' });
 	}
 	let onPostChange = () => {
 		let text = newPostElement.current.value;
-		props.updateNewPostText(text);
+		props.dispatch({ type: 'UPDATE-NEW-POST-TEXT', newText: text });
 	}
 	return (
 		<div>
@@ -23,7 +23,7 @@ const MyPosts = (props) => {
 					<h2>Что у вас нового?</h2>
 				</div>
 				<div className={c.get_posts}>
-					<textarea onChange={onPostChange} ref={newPostElement} value={props.newPostText} />
+					<textarea onChange={onPostChange} ref={newPostElement} value={props.profilePage.newPostText} />
 					<button onClick={addPost}>Опубликовать</button>
 				</div>
 			</div>
