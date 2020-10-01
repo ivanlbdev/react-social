@@ -13,6 +13,7 @@ let renderEntrieTree = (state) => {
 	ReactDOM.render(
 		<React.StrictMode>
 			<App
+				store={store}
 				appState={state}
 				dispatch={store.dispatch.bind(store)}
 			/>
