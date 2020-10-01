@@ -3,7 +3,7 @@ import c from './FriendsBar.module.css';
 import FriendsCard from './FriendsCard/FriendsCard';
 
 const FriendsBar = (props) => {
-	let goCard = props.state.map((value) => <FriendsCard name={value.name} />);
+	let goCard = props.state.navBar.friendsBar.map((value) => <FriendsCard name={value.name} />);
 	return (
 
 		<div className={c.friends}>
