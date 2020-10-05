@@ -10,7 +10,6 @@ import DialogsContainer from './components/dialogs/DialogsContainer';
 import Navigation from './components/navbar/Navbar';
 
 const App = (props) => {
-  debugger;
   return (
     <BrowserRouter>
       <div className="app-wrapper">
