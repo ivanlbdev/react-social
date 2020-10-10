@@ -23,6 +23,9 @@ const Navigation = (props) => {
 					<div>
 						<NavLink to="/settings" activeClassName={c.active}>Настройки</NavLink>
 					</div>
+					<div>
+						<NavLink to="/users" activeClassName={c.active}>Поиск друзей</NavLink>
+					</div>
 				</div>
 			</nav>
 			<FriendsBarContainer />
