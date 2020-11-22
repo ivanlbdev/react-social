@@ -4,9 +4,7 @@ import c from './Users.module.css';
 import userPhoto from '../img/IMG_5761.jpg';
 
 class Users extends React.Component {
-	constructor(props) {
-		super(props);
-		alert('new');
+	componentDidMount() {
 		if (this.props.users.length === 0) {
 
 
