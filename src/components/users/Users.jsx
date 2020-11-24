@@ -5,29 +5,36 @@ import userPhoto from '../img/IMG_5761.jpg';
 
 class Users extends React.Component {
 	componentDidMount() {
-		if (this.props.users.length === 0) {
-
-
-			axios.get('https://social-network.samuraijs.com/api/1.0/users').then(responce => {
-				this.props.setUsers(responce.data.items);
-			})
-		}
+		axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(responce => {
+			this.props.setUsers(responce.data.items);
+			let total = responce.data.totalCount;
+			total < 100 ? this.props.setTotalPage(responce.data.totalCount) : this.props.setTotalPage(100)
+		})
 	}
-	getUsers = () => {
-		if (this.props.users.length === 0) {
 
-
-			axios.get('https://social-network.samuraijs.com/api/1.0/users').then(responce => {
-				this.props.setUsers(responce.data.items);
-			})
-		}
+	onPageChanged = (pageNamber) => {
+		this.props.setPage(pageNamber)
+		axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNamber}&count=${this.props.pageSize}`).then(responce => {
+			this.props.setUsers(responce.data.items);
+		})
 	}
 
 	render() {
+		let pageCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
+		let pages = [];
+		for (let i = 1; i <= pageCount; i++) {
+			pages.push(i);
+		}
 		return (
 
 			<div>
-				<button onClick={this.getUsers}>Get Users</button>
+				<div className={c.numberBlock}>
+					{
+						pages.map((page) => {
+							return <span className={this.props.currentPage === page && c.selectedPage} onClick={() => { this.onPageChanged(page) }}>{page}</span>
+						})
+					}
+				</div>
 				{
 					this.props.users.map((user) => <div key={user.id}>
 						<div className={c.user_block}>
