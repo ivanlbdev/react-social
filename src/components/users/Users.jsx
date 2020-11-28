@@ -10,7 +10,6 @@ let Users = (props) => {
 	}
 
 	return (
-
 		<div>
 			<div className={c.numberBlock}>
 				{
