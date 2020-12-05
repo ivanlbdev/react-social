@@ -1,14 +1,19 @@
 import React from 'react';
 import AvatarUser from '../../img/IMG_5761.jpg'
+import Loader from '../../loader/Loader';
 import c from './Profileinfo.module.css';
 
-const ProfileInfo = () => {
+const ProfileInfo = (props) => {
+	if (!props.profile) {
+		return <Loader />
+	}
+
 	return (
 		<div>
 			<div className={c.panorama}></div>
 			<div className={c.avatar}>
 				<div className={c.avatar_photo}>
-					<img src={AvatarUser} alt="lalala" />
+					<img src={props.profile.photos.small} alt="lalala" />
 				</div>
 			</div>
 			<div className={c.name_title}>
