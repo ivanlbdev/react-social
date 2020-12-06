@@ -13,16 +13,17 @@ const ProfileInfo = (props) => {
 			<div className={c.panorama}></div>
 			<div className={c.avatar}>
 				<div className={c.avatar_photo}>
-					<img src={props.profile.photos.small} alt="lalala" />
+					<img src={!props.profile.photos.small ? AvatarUser : props.profile.photos.small} alt="lalala" />
 				</div>
 			</div>
 			<div className={c.name_title}>
-				<h1>My Name</h1>
+				<h1> {props.profile.fullName} </h1>
+				<p> {props.profile.aboutMe} </p>
 			</div>
 			<div className={c.information}>
 				<div className={c.first_column}>
-					<p>Дата рождения: 01.01.2201</p>
-					<p>Место рождения: город Ярославль</p>
+					<p>Ищу работу: {props.profile.lookingForAJob ? 'да' : 'нет'} </p>
+					<p>Какую работу хочу: {props.profile.lookingForAJobDescription} </p>
 					<p>Семейное положение: не женат</p>
 				</div>
 				<div className={c.second_column}>

@@ -34,3 +34,13 @@
 	border-radius: 50%;
 	background-color: #fff;
  }
+
+ .login a {
+	 color: white;
+	 text-decoration: none;
+ }
+
+ .login a:hover {
+	color: white;
+	text-decoration: underline;
+}

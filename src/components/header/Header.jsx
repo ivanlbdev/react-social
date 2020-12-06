@@ -1,9 +1,11 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
+import LoaderMini from '../loader/mini/LoaderMini';
 import classes from './Header.module.css';
 
 
 
-const Header = () => {
+const Header = (props) => {
 	return (
 		<header className={classes.header}>
 			<div className={classes.container}>
@@ -12,14 +14,21 @@ const Header = () => {
 					<div className={classes.search_area}>
 						<input type="text" />
 					</div>
-					<div className={classes.menu_list}>
-						<p>Выход</p>
-					</div>
+					{!props.isFetch ?
+						<div className={classes.login}>
+							{props.isAuth ? props.login :
+								< NavLink to='/login'>
+									Вход
+										</NavLink>
+							}
+						</div> :
+						<LoaderMini />
+					}
 				</div>
 
 			</div>
 
-		</header>
+		</header >
 	)
 }
 
