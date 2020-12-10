@@ -8,7 +8,7 @@ import Loader from '../loader/Loader';
 class UsersAPIComponent extends React.Component {
 	componentDidMount() {
 		this.props.toggleFetching(true);
-		axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(responce => {
+		axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`, { withCredentials: true, }).then(responce => {
 			this.props.toggleFetching(false);
 			this.props.setUsers(responce.data.items);
 			let total = responce.data.totalCount;
@@ -19,7 +19,7 @@ class UsersAPIComponent extends React.Component {
 	onPageChanged = (pageNamber) => {
 		this.props.toggleFetching(true);
 		this.props.setPage(pageNamber)
-		axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNamber}&count=${this.props.pageSize}`).then(responce => {
+		axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNamber}&count=${this.props.pageSize}`, { withCredentials: true }).then(responce => {
 			this.props.toggleFetching(false);
 			this.props.setUsers(responce.data.items);
 		})

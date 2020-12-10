@@ -12,6 +12,7 @@ let initialState = {
 	],
 	newPostText: '',
 	profile: null,
+	isFetching: false,
 }
 
 const profileReducer = (state = initialState, action) => {
