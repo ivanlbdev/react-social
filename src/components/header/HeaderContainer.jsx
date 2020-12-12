@@ -1,21 +1,13 @@
 import React from 'react';
 import Header from './Header';
 import { connect } from 'react-redux';
-import { setAuthUserData, toggleFetching } from '../redux/auth-reducer';
-import { auth } from '../../api/api';
+import { authThunk } from '../redux/auth-reducer';
 
 
 
 class HeaderContainer extends React.Component {
 	componentDidMount() {
-		this.props.toggleFetching(true);
-		auth().then(data => {
-			if (data.resultCode === 0) {
-				this.props.toggleFetching(false);
-				let { id, email, login } = data.data;
-				this.props.setAuthUserData(id, email, login);
-			}
-		})
+		this.props.authThunk();
 	}
 	render() {
 		return <Header {...this.props} />
@@ -28,4 +20,6 @@ const mapStateToProps = (state) => ({
 	isFetch: state.auth.isFetching,
 })
 
-export default connect(mapStateToProps, { setAuthUserData, toggleFetching })(HeaderContainer);
+
+
+export default connect(mapStateToProps, { authThunk })(HeaderContainer);

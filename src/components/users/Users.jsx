@@ -2,7 +2,6 @@ import React from 'react';
 import c from './Users.module.css';
 import userPhoto from '../img/IMG_5761.jpg';
 import { NavLink } from 'react-router-dom';
-import { follow, unfollow } from '../../api/api';
 
 let Users = (props) => {
 	let pageCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -10,7 +9,6 @@ let Users = (props) => {
 	for (let i = 1; i <= pageCount; i++) {
 		pages.push(i);
 	}
-
 	return (
 		<div>
 			<div className={c.numberBlock}>
@@ -34,22 +32,11 @@ let Users = (props) => {
 								</div>
 								<div>
 									{user.followed
-										? <button onClick={() => {
-
-											unfollow(user.id).then(responce => {
-												if (responce.data.resultCode === 0) {
-													props.unfollow(user.id)
-												}
-											})
-
+										? <button disabled={props.isProgress.some(id => id === user.id)} onClick={() => {
+											props.unfollow(user.id);
 										}}>unfollow</button>
-										: <button onClick={() => {
-											follow(user.id).then(responce => {
-												if (responce.data.resultCode === 0) {
-													props.follow(user.id)
-												}
-											})
-
+										: <button disabled={props.isProgress.some(id => id === user.id)} onClick={() => {
+											props.follow(user.id);
 										}}>follow</button>}
 								</div>
 							</div>

@@ -1,28 +1,16 @@
 import { connect } from 'react-redux';
-import { follow, unfollow, setUsers, setPage, setTotalPage, toggleFetching } from '../redux/users-reducer';
+import { followThunk, unFollowThunk, setUsers, setPage, getUserThunkCreator, setCurentPageThunk } from '../redux/users-reducer';
 import React from 'react';
 import Users from './Users';
 import Loader from '../loader/Loader';
-import { getUsers } from '../../api/api';
 
 class UsersAPIComponent extends React.Component {
 	componentDidMount() {
-		this.props.toggleFetching(true);
-		getUsers(this.props.currentPage, this.props.pageSize).then(data => {
-			this.props.toggleFetching(false);
-			this.props.setUsers(data.items);
-			let total = data.totalCount;
-			total < 100 ? this.props.setTotalPage(data.totalCount) : this.props.setTotalPage(100)
-		})
+		this.props.getUserThunkCreator(this.props.currentPage, this.props.pageSize);
 	}
 
 	onPageChanged = (pageNamber) => {
-		this.props.toggleFetching(true);
-		this.props.setPage(pageNamber)
-		getUsers(pageNamber, this.props.pageSize).then(data => {
-			this.props.toggleFetching(false);
-			this.props.setUsers(data.items);
-		})
+		this.props.setCurentPageThunk(pageNamber, this.props.pageSize);
 	}
 	render() {
 		return <>
@@ -31,8 +19,9 @@ class UsersAPIComponent extends React.Component {
 				currentPage={this.props.currentPage}
 				onPageChanged={this.onPageChanged}
 				users={this.props.users}
-				unfollow={this.props.unfollow}
-				follow={this.props.follow}
+				unfollow={this.props.unFollowThunk}
+				follow={this.props.followThunk}
+				isProgress={this.props.isProgress}
 			/>}
 		</>
 	}
@@ -45,6 +34,7 @@ let mapStateToProps = (state) => {
 		totalUsersCount: state.usersPage.totalUsersCount,
 		currentPage: state.usersPage.currentPage,
 		isFetching: state.usersPage.isFetching,
+		isProgress: state.usersPage.followingInProgress,
 	}
 };
 // let mapDispatchToProps = (dispatch) => {
@@ -72,4 +62,4 @@ let mapStateToProps = (state) => {
 
 
 
-export default connect(mapStateToProps, { follow, unfollow, setUsers, setPage, setTotalPage, toggleFetching })(UsersAPIComponent);
+export default connect(mapStateToProps, { followThunk, unFollowThunk, setUsers, setPage, getUserThunkCreator, setCurentPageThunk })(UsersAPIComponent);
