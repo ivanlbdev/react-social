@@ -3,6 +3,7 @@ import { followThunk, unFollowThunk, setUsers, setPage, getUserThunkCreator, set
 import React from 'react';
 import Users from './Users';
 import Loader from '../loader/Loader';
+import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 
 class UsersAPIComponent extends React.Component {
 	componentDidMount() {
@@ -60,6 +61,7 @@ let mapStateToProps = (state) => {
 // 	}
 // }
 
+let withRedirect = withAuthRedirect(UsersAPIComponent)
 
 
-export default connect(mapStateToProps, { followThunk, unFollowThunk, setUsers, setPage, getUserThunkCreator, setCurentPageThunk })(UsersAPIComponent);
+export default connect(mapStateToProps, { followThunk, unFollowThunk, setUsers, setPage, getUserThunkCreator, setCurentPageThunk })(withRedirect);
